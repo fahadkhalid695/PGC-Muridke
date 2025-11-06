@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiUserGroup, HiAcademicCap, HiHeart, HiLightningBolt } from 'react-icons/hi'
 import Modal from '../components/Modal'
+import { FORM_LINKS } from '../config/forms'
 
 const StudentLife = () => {
-  const [showTourModal, setShowTourModal] = useState(false)
   const [selectedActivity, setSelectedActivity] = useState(null)
   
   const activities = [
@@ -271,124 +271,17 @@ const StudentLife = () => {
             <p className="text-xl mb-8">
               Schedule a campus tour and see what makes our community special
             </p>
-            <button 
-              onClick={() => setShowTourModal(true)}
-              className="bg-white text-primary hover:bg-gray-100 px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl"
+            <a 
+              href={FORM_LINKS.campusTour}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-white text-primary hover:bg-gray-100 px-10 py-4 rounded-full font-bold text-lg transition-all transform hover:scale-105 shadow-xl"
             >
               Book a Tour
-            </button>
+            </a>
           </motion.div>
         </div>
       </section>
-
-      {/* Campus Tour Modal */}
-      <Modal 
-        isOpen={showTourModal} 
-        onClose={() => setShowTourModal(false)} 
-        title="Book Campus Tour"
-        size="md"
-      >
-        <form onSubmit={(e) => {
-          e.preventDefault()
-          alert('Tour booked successfully! We will send you a confirmation email.')
-          setShowTourModal(false)
-        }} className="space-y-4">
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Full Name *
-            </label>
-            <input
-              type="text"
-              required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-              placeholder="John Doe"
-            />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Email *
-              </label>
-              <input
-                type="email"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                placeholder="john@example.com"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Phone *
-              </label>
-              <input
-                type="tel"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                placeholder="+1 (555) 123-4567"
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Preferred Date *
-              </label>
-              <input
-                type="date"
-                required
-                min={new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Preferred Time *
-              </label>
-              <select
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-              >
-                <option value="">Select time</option>
-                <option value="9:00 AM">9:00 AM</option>
-                <option value="11:00 AM">11:00 AM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Number of Visitors
-            </label>
-            <input
-              type="number"
-              min="1"
-              max="10"
-              defaultValue="1"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-            />
-          </div>
-
-          <div className="flex space-x-4">
-            <button
-              type="submit"
-              className="flex-1 bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-all"
-            >
-              Book Tour
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowTourModal(false)}
-              className="px-6 bg-gray-200 hover:bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold transition-all"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      </Modal>
 
       {/* Activity Details Modal */}
       {selectedActivity && (
@@ -471,15 +364,14 @@ const StudentLife = () => {
               <p className="mb-4 text-gray-100">
                 Get in touch with us to learn more about how you can participate in {selectedActivity.title.toLowerCase()}.
               </p>
-              <button 
-                onClick={() => {
-                  setSelectedActivity(null)
-                  setShowTourModal(true)
-                }}
-                className="bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors"
+              <a 
+                href={FORM_LINKS.campusTour}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors"
               >
                 Schedule a Visit
-              </button>
+              </a>
             </div>
           </div>
         </Modal>

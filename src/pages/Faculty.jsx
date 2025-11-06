@@ -2,12 +2,11 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiMail, HiAcademicCap, HiLocationMarker, HiBriefcase } from 'react-icons/hi'
 import Modal from '../components/Modal'
-import ContactModal from '../components/ContactModal'
+import { FORM_LINKS } from '../config/forms'
 
 const Faculty = () => {
   const [selectedDept, setSelectedDept] = useState('All')
   const [showPositionsModal, setShowPositionsModal] = useState(false)
-  const [showContactModal, setShowContactModal] = useState(false)
 
   const departments = ['All', 'Computer Science', 'Business', 'Engineering', 'Arts & Sciences']
 
@@ -248,26 +247,19 @@ const Faculty = () => {
                 </ul>
               </div>
 
-              <button 
-                onClick={() => {
-                  setShowPositionsModal(false)
-                  setShowContactModal(true)
-                }}
-                className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+              <a 
+                href={FORM_LINKS.facultyApplication}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
               >
                 Apply for this Position
-              </button>
+              </a>
             </div>
           ))}
         </div>
       </Modal>
 
-      {/* Contact Modal */}
-      <ContactModal 
-        isOpen={showContactModal} 
-        onClose={() => setShowContactModal(false)}
-        subject="faculty"
-      />
     </div>
   )
 }

@@ -1,34 +1,14 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiMail, HiPhone, HiLocationMarker, HiClock } from 'react-icons/hi'
 import { FaWhatsapp } from 'react-icons/fa'
-import Modal from '../components/Modal'
+import { FORM_LINKS } from '../config/forms'
 
 const Contact = () => {
-  const [showTourModal, setShowTourModal] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-  }
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
-
   const contactInfo = [
     {
       icon: HiLocationMarker,
       title: 'Visit Us',
-      details: ['Q7P5+9H5, Muridke', 'Punjab, Pakistan'],
+      details: ['Near THQ Hospital, Muridke', 'Punjab, Pakistan'],
     },
     {
       icon: HiPhone,
@@ -105,97 +85,25 @@ const Contact = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="bg-white rounded-2xl shadow-lg p-8"
             >
               <h2 className="font-heading font-bold text-4xl text-primary mb-6">
                 Send Us a Message
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                    placeholder="John Doe"
-                  />
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-gray-700 font-semibold mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-gray-700 font-semibold mb-2">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
-                    Subject *
-                  </label>
-                  <select
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="admissions">Admissions Inquiry</option>
-                    <option value="programs">Program Information</option>
-                    <option value="campus">Campus Tour</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 font-semibold mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="5"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
-                    placeholder="Tell us how we can help you..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-accent hover:bg-accent/90 text-white py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg"
-                >
-                  Send Message
-                </button>
-              </form>
+              <p className="text-gray-600 mb-6">
+                Fill out our contact form and we'll get back to you as soon as possible.
+              </p>
+              <a
+                href={FORM_LINKS.contact}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block w-full bg-accent hover:bg-accent/90 text-white py-4 rounded-lg font-bold text-lg transition-all transform hover:scale-105 shadow-lg text-center"
+              >
+                Open Contact Form
+              </a>
+              <p className="text-sm text-gray-500 mt-4 text-center">
+                Opens in a new tab • Powered by Google Forms
+              </p>
             </motion.div>
 
             {/* Map & Quick Actions */}
@@ -231,12 +139,14 @@ const Contact = () => {
                     <FaWhatsapp size={24} />
                     <span>Chat on WhatsApp</span>
                   </a>
-                  <button 
-                    onClick={() => setShowTourModal(true)}
-                    className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-semibold transition-colors"
+                  <a 
+                    href={FORM_LINKS.campusTour}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full block text-center bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-semibold transition-colors"
                   >
                     Schedule Campus Tour
-                  </button>
+                  </a>
                   <button className="w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-colors">
                     Download Brochure
                   </button>
@@ -261,126 +171,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
-      {/* Campus Tour Modal */}
-      <Modal 
-        isOpen={showTourModal} 
-        onClose={() => setShowTourModal(false)} 
-        title="Schedule Campus Tour"
-        size="md"
-      >
-        <form onSubmit={(e) => {
-          e.preventDefault()
-          alert('Tour scheduled successfully! We will send you a confirmation email.')
-          setShowTourModal(false)
-        }} className="space-y-4">
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Full Name *
-            </label>
-            <input
-              type="text"
-              required
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-              placeholder="John Doe"
-            />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Email *
-              </label>
-              <input
-                type="email"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                placeholder="john@example.com"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Phone *
-              </label>
-              <input
-                type="tel"
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-                placeholder="+1 (555) 123-4567"
-              />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Preferred Date *
-              </label>
-              <input
-                type="date"
-                required
-                min={new Date().toISOString().split('T')[0]}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Preferred Time *
-              </label>
-              <select
-                required
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-              >
-                <option value="">Select time</option>
-                <option value="9:00 AM">9:00 AM</option>
-                <option value="11:00 AM">11:00 AM</option>
-                <option value="2:00 PM">2:00 PM</option>
-                <option value="4:00 PM">4:00 PM</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Number of Visitors
-            </label>
-            <input
-              type="number"
-              min="1"
-              max="10"
-              defaultValue="1"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Areas of Interest
-            </label>
-            <textarea
-              rows="3"
-              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
-              placeholder="Which programs or facilities would you like to see?"
-            ></textarea>
-          </div>
-
-          <div className="flex space-x-4">
-            <button
-              type="submit"
-              className="flex-1 bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-all"
-            >
-              Schedule Tour
-            </button>
-            <button
-              type="button"
-              onClick={() => setShowTourModal(false)}
-              className="px-6 bg-gray-200 hover:bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold transition-all"
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
-      </Modal>
     </div>
   )
 }

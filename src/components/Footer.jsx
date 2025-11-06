@@ -1,8 +1,16 @@
 import { Link } from 'react-router-dom'
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa'
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi'
+import { SOCIAL_LINKS } from '../config/social'
 
 const Footer = () => {
+  const socialIcons = [
+    { name: 'Facebook', icon: FaFacebook, link: SOCIAL_LINKS.facebook },
+    { name: 'Twitter', icon: FaTwitter, link: SOCIAL_LINKS.twitter },
+    { name: 'Instagram', icon: FaInstagram, link: SOCIAL_LINKS.instagram },
+    { name: 'LinkedIn', icon: FaLinkedin, link: SOCIAL_LINKS.linkedin },
+    { name: 'YouTube', icon: FaYoutube, link: SOCIAL_LINKS.youtube },
+  ]
   return (
     <footer className="bg-primary text-white relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-primary via-accent/10 to-primary opacity-50"></div>
@@ -16,17 +24,26 @@ const Footer = () => {
                 alt="PGC Logo" 
                 className="h-12 w-auto object-contain bg-white rounded-lg p-1"
               />
-              <h3 className="font-heading font-bold text-xl">PGC</h3>
+              <h3 className="font-heading font-bold text-xl">PGC Muridke</h3>
             </div>
             <p className="text-gray-300 mb-4">
               Empowering minds and building futures through quality education.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-accent transition-colors"><FaFacebook size={20} /></a>
-              <a href="#" className="hover:text-accent transition-colors"><FaTwitter size={20} /></a>
-              <a href="#" className="hover:text-accent transition-colors"><FaInstagram size={20} /></a>
-              <a href="#" className="hover:text-accent transition-colors"><FaLinkedin size={20} /></a>
-              <a href="#" className="hover:text-accent transition-colors"><FaYoutube size={20} /></a>
+              {socialIcons.map((social) => 
+                social.link ? (
+                  <a 
+                    key={social.name}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-accent transition-colors"
+                    aria-label={social.name}
+                  >
+                    <social.icon size={20} />
+                  </a>
+                ) : null
+              )}
             </div>
           </div>
 
@@ -55,7 +72,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2">
                 <HiLocationMarker className="mt-1 flex-shrink-0" />
-                <span className="text-gray-300">Q7P5+9H5, Muridke, Pakistan</span>
+                <span className="text-gray-300">Near THQ Hospital, Muridke, Pakistan</span>
               </li>
               <li className="flex items-center space-x-2">
                 <HiPhone />
@@ -70,7 +87,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} PGC. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PGC Muridke. All rights reserved.</p>
         </div>
       </div>
     </footer>

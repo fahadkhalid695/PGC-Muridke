@@ -2,12 +2,11 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiAcademicCap, HiClock, HiUsers, HiCheckCircle } from 'react-icons/hi'
 import Modal from '../components/Modal'
-import ContactModal from '../components/ContactModal'
+import { FORM_LINKS } from '../config/forms'
 
 const Programs = () => {
   const [filter, setFilter] = useState('All')
   const [selectedProgram, setSelectedProgram] = useState(null)
-  const [showContactModal, setShowContactModal] = useState(false)
 
   const categories = ['All', 'Undergraduate', 'Graduate', 'Certifications']
 
@@ -195,12 +194,14 @@ const Programs = () => {
             <p className="text-xl text-gray-600 mb-8">
               Contact our admissions team to explore more options tailored to your goals
             </p>
-            <button 
-              onClick={() => setShowContactModal(true)}
-              className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105"
+            <a 
+              href={FORM_LINKS.contact}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105"
             >
               Contact Admissions
-            </button>
+            </a>
           </motion.div>
         </div>
       </section>
@@ -262,27 +263,20 @@ const Programs = () => {
                   <p className="text-gray-600 text-sm">Tuition Fees</p>
                   <p className="font-heading font-bold text-2xl text-primary">{selectedProgram.fees}</p>
                 </div>
-                <button 
-                  onClick={() => {
-                    setSelectedProgram(null)
-                    setShowContactModal(true)
-                  }}
-                  className="bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                <a 
+                  href={FORM_LINKS.programApplication}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-accent hover:bg-accent/90 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
                 >
                   Apply Now
-                </button>
+                </a>
               </div>
             </div>
           </div>
         </Modal>
       )}
 
-      {/* Contact Modal */}
-      <ContactModal 
-        isOpen={showContactModal} 
-        onClose={() => setShowContactModal(false)}
-        subject="programs"
-      />
     </div>
   )
 }
