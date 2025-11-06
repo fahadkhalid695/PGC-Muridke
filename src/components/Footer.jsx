@@ -10,7 +10,14 @@ const Footer = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-heading font-bold text-xl mb-4">Excellence Institute</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src="/logo.png" 
+                alt="PGC Logo" 
+                className="h-12 w-auto object-contain bg-white rounded-lg p-1"
+              />
+              <h3 className="font-heading font-bold text-xl">PGC</h3>
+            </div>
             <p className="text-gray-300 mb-4">
               Empowering minds and building futures through quality education.
             </p>
@@ -63,7 +70,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-gray-300">
-          <p>&copy; {new Date().getFullYear()} Excellence Institute. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} PGC. All rights reserved.</p>
         </div>
       </div>
     </footer>

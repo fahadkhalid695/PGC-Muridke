@@ -133,12 +133,12 @@ const News = () => {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-8">
+          <div className="lg:sticky lg:top-32 lg:self-start space-y-8">
             {/* Upcoming Events */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              className="bg-white rounded-2xl shadow-lg p-6 sticky top-32"
+              className="bg-white rounded-2xl shadow-lg p-6"
             >
               <h3 className="font-heading font-bold text-2xl text-primary mb-6">
                 Upcoming Events

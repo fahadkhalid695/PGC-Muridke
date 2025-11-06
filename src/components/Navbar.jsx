@@ -27,32 +27,40 @@ const Navbar = () => {
     { name: 'Contact', path: '/contact' },
   ]
 
+  // Check if we're on home page and at the top
+  const isHomePage = location.pathname === '/'
+  const shouldBeTransparent = isHomePage && !scrolled
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        shouldBeTransparent 
+          ? 'bg-primary/80 backdrop-blur-sm' 
+          : 'bg-white shadow-lg'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">E</span>
-            </div>
-            <span className={`font-heading font-bold text-xl ${scrolled ? 'text-primary' : 'text-white'}`}>
-              Excellence Institute
+            <img 
+              src="/logo.png" 
+              alt="Institution Logo" 
+              className="h-14 w-auto object-contain"
+            />
+            <span className={`font-heading font-bold text-lg ${shouldBeTransparent ? 'text-white' : 'text-primary'}`}>
+              PGC
             </span>
           </Link>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={`font-medium transition-colors relative group ${
-                  scrolled ? 'text-gray-700 hover:text-accent' : 'text-white hover:text-accent'
+                  shouldBeTransparent ? 'text-white hover:text-accent' : 'text-gray-700 hover:text-accent'
                 } ${location.pathname === link.path ? 'text-accent' : ''}`}
               >
                 {link.name}
@@ -63,7 +71,7 @@ const Navbar = () => {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden ${scrolled ? 'text-primary' : 'text-white'}`}
+            className={`md:hidden ${shouldBeTransparent ? 'text-white' : 'text-primary'}`}
           >
             {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
           </button>

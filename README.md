@@ -48,22 +48,29 @@ The optimized files will be in the `dist` folder.
 
 ## 🎨 Customization
 
+### Logo
+
+The logo is located at `public/logo.png`. Replace it with your own logo and it will automatically update throughout the site.
+
 ### Colors
 
-Edit `tailwind.config.js` to change the color scheme:
+The color scheme matches your logo:
 
 ```js
 colors: {
-  primary: '#002B5B',  // Deep Blue
-  accent: '#E50914',   // Bright Red
+  primary: '#002B5B',  // Deep Blue (from logo)
+  accent: '#E50914',   // Bright Red (from logo)
 }
 ```
+
+Edit `tailwind.config.js` to adjust colors if needed.
 
 ### Content
 
 - Update text content in each page component (`src/pages/*.jsx`)
 - Replace placeholder images with your own
 - Modify contact information in `src/components/Footer.jsx` and `src/pages/Contact.jsx`
+- Update institution name from "PGC" to your institution's name
 
 ### Fonts
 
