@@ -1,7 +1,12 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiCheckCircle, HiDocumentText, HiCalendar, HiCreditCard } from 'react-icons/hi'
+import ContactModal from '../components/ContactModal'
+import Modal from '../components/Modal'
 
 const Admissions = () => {
+  const [showContactModal, setShowContactModal] = useState(false)
+  const [showTourModal, setShowTourModal] = useState(false)
   const steps = [
     { icon: HiDocumentText, title: 'Submit Application', description: 'Complete online form' },
     { icon: HiCalendar, title: 'Entrance Test', description: 'Schedule and attend' },
@@ -180,16 +185,138 @@ const Admissions = () => {
               Our admissions team is here to help you every step of the way
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-semibold transition-all">
+              <button 
+                onClick={() => setShowContactModal(true)}
+                className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full font-semibold transition-all"
+              >
                 Contact Admissions
               </button>
-              <button className="bg-white hover:bg-gray-50 text-primary border-2 border-primary px-8 py-3 rounded-full font-semibold transition-all">
+              <button 
+                onClick={() => setShowTourModal(true)}
+                className="bg-white hover:bg-gray-50 text-primary border-2 border-primary px-8 py-3 rounded-full font-semibold transition-all"
+              >
                 Schedule Campus Tour
               </button>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={showContactModal} 
+        onClose={() => setShowContactModal(false)}
+        subject="admissions"
+      />
+
+      {/* Campus Tour Modal */}
+      <Modal 
+        isOpen={showTourModal} 
+        onClose={() => setShowTourModal(false)} 
+        title="Schedule Campus Tour"
+        size="md"
+      >
+        <form onSubmit={(e) => {
+          e.preventDefault()
+          alert('Tour scheduled successfully! We will send you a confirmation email.')
+          setShowTourModal(false)
+        }} className="space-y-4">
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              placeholder="John Doe"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Email *
+              </label>
+              <input
+                type="email"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                placeholder="john@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Phone *
+              </label>
+              <input
+                type="tel"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                placeholder="+1 (555) 123-4567"
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Preferred Date *
+              </label>
+              <input
+                type="date"
+                required
+                min={new Date().toISOString().split('T')[0]}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Preferred Time *
+              </label>
+              <select
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              >
+                <option value="">Select time</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Number of Visitors
+            </label>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              defaultValue="1"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+            />
+          </div>
+
+          <div className="flex space-x-4">
+            <button
+              type="submit"
+              className="flex-1 bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-all"
+            >
+              Schedule Tour
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowTourModal(false)}
+              className="px-6 bg-gray-200 hover:bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold transition-all"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </Modal>
     </div>
   )
 }

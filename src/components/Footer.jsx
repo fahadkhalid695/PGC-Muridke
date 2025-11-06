@@ -55,11 +55,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2">
                 <HiLocationMarker className="mt-1 flex-shrink-0" />
-                <span className="text-gray-300">123 Education Street, City, State 12345</span>
+                <span className="text-gray-300">Q7P5+9H5, Muridke, Pakistan</span>
               </li>
               <li className="flex items-center space-x-2">
                 <HiPhone />
-                <span className="text-gray-300">+1 (555) 123-4567</span>
+                <span className="text-gray-300">+92 (300) 123-4567</span>
               </li>
               <li className="flex items-center space-x-2">
                 <HiMail />

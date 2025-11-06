@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { HiMail, HiPhone, HiLocationMarker, HiClock } from 'react-icons/hi'
 import { FaWhatsapp } from 'react-icons/fa'
+import Modal from '../components/Modal'
 
 const Contact = () => {
+  const [showTourModal, setShowTourModal] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,17 +28,17 @@ const Contact = () => {
     {
       icon: HiLocationMarker,
       title: 'Visit Us',
-      details: ['123 Education Street', 'City, State 12345', 'United States'],
+      details: ['Q7P5+9H5, Muridke', 'Punjab, Pakistan'],
     },
     {
       icon: HiPhone,
       title: 'Call Us',
-      details: ['+1 (555) 123-4567', '+1 (555) 123-4568'],
+      details: ['+92 (300) 123-4567', '+92 (300) 123-4568'],
     },
     {
       icon: HiMail,
       title: 'Email Us',
-      details: ['info@excellence.edu', 'admissions@excellence.edu'],
+      details: ['info@pgc.edu.pk', 'admissions@pgc.edu.pk'],
     },
     {
       icon: HiClock,
@@ -205,13 +207,13 @@ const Contact = () => {
             >
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-96">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1841!2d-73.9875!3d40.7589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzMyLjAiTiA3M8KwNTknMTUuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.0!2d74.2589!3d31.7859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDQ3JzA5LjIiTiA3NMKwMTUnMzIuMCJF!5e0!3m2!1sen!2s!4v1234567890"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen=""
                   loading="lazy"
-                  title="Campus Location"
+                  title="Campus Location - Q7P5+9H5, Muridke, Pakistan"
                 ></iframe>
               </div>
 
@@ -220,11 +222,19 @@ const Contact = () => {
                   Quick Actions
                 </h3>
                 <div className="space-y-3">
-                  <button className="w-full flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-colors">
+                  <a 
+                    href="https://wa.me/923001234567?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20PGC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center space-x-3 bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-colors"
+                  >
                     <FaWhatsapp size={24} />
                     <span>Chat on WhatsApp</span>
-                  </button>
-                  <button className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-semibold transition-colors">
+                  </a>
+                  <button 
+                    onClick={() => setShowTourModal(true)}
+                    className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-semibold transition-colors"
+                  >
                     Schedule Campus Tour
                   </button>
                   <button className="w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-colors">
@@ -241,16 +251,136 @@ const Contact = () => {
                   Our admissions team is available to answer your questions right away.
                 </p>
                 <a
-                  href="tel:+15551234567"
+                  href="tel:+923001234567"
                   className="inline-block bg-white text-primary hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold transition-colors"
                 >
-                  Call Now: +1 (555) 123-4567
+                  Call Now: +92 (300) 123-4567
                 </a>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+
+      {/* Campus Tour Modal */}
+      <Modal 
+        isOpen={showTourModal} 
+        onClose={() => setShowTourModal(false)} 
+        title="Schedule Campus Tour"
+        size="md"
+      >
+        <form onSubmit={(e) => {
+          e.preventDefault()
+          alert('Tour scheduled successfully! We will send you a confirmation email.')
+          setShowTourModal(false)
+        }} className="space-y-4">
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Full Name *
+            </label>
+            <input
+              type="text"
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              placeholder="John Doe"
+            />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Email *
+              </label>
+              <input
+                type="email"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                placeholder="john@example.com"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Phone *
+              </label>
+              <input
+                type="tel"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+                placeholder="+1 (555) 123-4567"
+              />
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Preferred Date *
+              </label>
+              <input
+                type="date"
+                required
+                min={new Date().toISOString().split('T')[0]}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2">
+                Preferred Time *
+              </label>
+              <select
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+              >
+                <option value="">Select time</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Number of Visitors
+            </label>
+            <input
+              type="number"
+              min="1"
+              max="10"
+              defaultValue="1"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Areas of Interest
+            </label>
+            <textarea
+              rows="3"
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none transition-all resize-none"
+              placeholder="Which programs or facilities would you like to see?"
+            ></textarea>
+          </div>
+
+          <div className="flex space-x-4">
+            <button
+              type="submit"
+              className="flex-1 bg-accent hover:bg-accent/90 text-white py-3 rounded-lg font-semibold transition-all"
+            >
+              Schedule Tour
+            </button>
+            <button
+              type="button"
+              onClick={() => setShowTourModal(false)}
+              className="px-6 bg-gray-200 hover:bg-gray-300 text-gray-700 py-3 rounded-lg font-semibold transition-all"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </Modal>
     </div>
   )
 }

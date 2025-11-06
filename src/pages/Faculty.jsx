@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { HiMail, HiAcademicCap } from 'react-icons/hi'
+import { HiMail, HiAcademicCap, HiLocationMarker, HiBriefcase } from 'react-icons/hi'
+import Modal from '../components/Modal'
+import ContactModal from '../components/ContactModal'
 
 const Faculty = () => {
   const [selectedDept, setSelectedDept] = useState('All')
+  const [showPositionsModal, setShowPositionsModal] = useState(false)
+  const [showContactModal, setShowContactModal] = useState(false)
 
   const departments = ['All', 'Computer Science', 'Business', 'Engineering', 'Arts & Sciences']
 
@@ -163,12 +167,107 @@ const Faculty = () => {
             <p className="text-xl text-gray-600 mb-8">
               We're always looking for passionate educators to join our community
             </p>
-            <button className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105">
+            <button 
+              onClick={() => setShowPositionsModal(true)}
+              className="bg-accent hover:bg-accent/90 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105"
+            >
               View Open Positions
             </button>
           </motion.div>
         </div>
       </section>
+
+      {/* Open Positions Modal */}
+      <Modal 
+        isOpen={showPositionsModal} 
+        onClose={() => setShowPositionsModal(false)} 
+        title="Open Faculty Positions"
+        size="lg"
+      >
+        <div className="space-y-6">
+          {[
+            {
+              title: 'Assistant Professor - Computer Science',
+              department: 'Computer Science',
+              type: 'Full-time',
+              location: 'Main Campus',
+              description: 'We are seeking a passionate educator with expertise in AI and Machine Learning.',
+              requirements: ['PhD in Computer Science or related field', '3+ years teaching experience', 'Strong research background', 'Published papers in reputed journals'],
+            },
+            {
+              title: 'Associate Professor - Business Administration',
+              department: 'Business',
+              type: 'Full-time',
+              location: 'Main Campus',
+              description: 'Looking for an experienced business educator with industry connections.',
+              requirements: ['PhD in Business Administration', '5+ years teaching experience', 'Industry experience preferred', 'Strong publication record'],
+            },
+            {
+              title: 'Lecturer - Engineering',
+              department: 'Engineering',
+              type: 'Part-time',
+              location: 'Main Campus',
+              description: 'Part-time position for robotics and automation systems instruction.',
+              requirements: ['Masters in Engineering', '2+ years experience', 'Hands-on project experience', 'Good communication skills'],
+            },
+          ].map((position, index) => (
+            <div key={index} className="border border-gray-200 rounded-xl p-6 hover:border-accent transition-colors">
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h3 className="font-heading font-bold text-xl text-primary mb-2">
+                    {position.title}
+                  </h3>
+                  <div className="flex flex-wrap gap-3 text-sm">
+                    <span className="flex items-center text-gray-600">
+                      <HiAcademicCap className="mr-1 text-accent" />
+                      {position.department}
+                    </span>
+                    <span className="flex items-center text-gray-600">
+                      <HiBriefcase className="mr-1 text-accent" />
+                      {position.type}
+                    </span>
+                    <span className="flex items-center text-gray-600">
+                      <HiLocationMarker className="mr-1 text-accent" />
+                      {position.location}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <p className="text-gray-600 mb-4">{position.description}</p>
+              
+              <div className="mb-4">
+                <h4 className="font-semibold text-primary mb-2">Requirements:</h4>
+                <ul className="space-y-1">
+                  {position.requirements.map((req, idx) => (
+                    <li key={idx} className="text-gray-600 text-sm flex items-start">
+                      <span className="text-accent mr-2">•</span>
+                      {req}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <button 
+                onClick={() => {
+                  setShowPositionsModal(false)
+                  setShowContactModal(true)
+                }}
+                className="bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
+              >
+                Apply for this Position
+              </button>
+            </div>
+          ))}
+        </div>
+      </Modal>
+
+      {/* Contact Modal */}
+      <ContactModal 
+        isOpen={showContactModal} 
+        onClose={() => setShowContactModal(false)}
+        subject="faculty"
+      />
     </div>
   )
 }
