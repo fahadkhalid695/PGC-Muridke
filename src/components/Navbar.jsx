@@ -50,7 +50,7 @@ const Navbar = () => {
               className="h-14 w-auto object-contain"
             />
             <span className={`font-heading font-bold text-lg ${shouldBeTransparent ? 'text-white' : 'text-primary'}`}>
-              PGC
+              PGC Muridke
             </span>
           </Link>
 
