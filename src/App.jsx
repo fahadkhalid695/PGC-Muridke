@@ -11,6 +11,7 @@ import Admissions from './pages/Admissions'
 import News from './pages/News'
 import StudentLife from './pages/StudentLife'
 import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/student-life" element={<StudentLife />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

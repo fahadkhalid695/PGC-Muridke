@@ -126,6 +126,17 @@ npm run build
 
 The optimized files will be in the `dist` folder.
 
+### Deploy to Vercel
+
+```bash
+npm install -g vercel
+vercel
+```
+
+Or connect your GitHub repo at [vercel.com](https://vercel.com)
+
+**Note:** The `vercel.json` file is included to fix routing issues. See `DEPLOYMENT_GUIDE.md` for details.
+
 ## 📁 Project Structure
 
 ```
