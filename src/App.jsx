@@ -21,13 +21,13 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="./about" element={<About />} />
-            <Route path="./programs" element={<Programs />} />
-            <Route path="./faculty" element={<Faculty />} />
-            <Route path="./admissions" element={<Admissions />} />
-            <Route path="./news" element={<News />} />
-            <Route path="./student-life" element={<StudentLife />} />
-            <Route path="./contact" element={<Contact />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/programs" element={<Programs />} />
+            <Route path="/faculty" element={<Faculty />} />
+            <Route path="/admissions" element={<Admissions />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/student-life" element={<StudentLife />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />
