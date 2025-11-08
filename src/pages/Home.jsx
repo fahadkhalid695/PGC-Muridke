@@ -66,17 +66,17 @@ const Home = () => {
     {
       title: 'New Research Center Opens',
       date: 'Nov 1, 2025',
-      image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400',
+      image: '/pgc1.png',
     },
     {
       title: 'Students Win National Competition',
       date: 'Oct 28, 2025',
-      image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400',
+      image: '/pgc2.png',
     },
     {
       title: 'Annual Tech Summit 2025',
       date: 'Oct 25, 2025',
-      image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400',
+      image: '/pgc3.png',
     },
   ]
 

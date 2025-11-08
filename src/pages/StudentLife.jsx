@@ -12,7 +12,7 @@ const StudentLife = () => {
       icon: HiUserGroup,
       title: 'Student Clubs',
       description: '50+ clubs covering tech, arts, sports, and more',
-      image: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600',
+      image: '/pgc1.png',
       fullDescription: 'Join one of our 50+ student clubs and organizations! Whether you\'re interested in technology, arts, business, or social causes, there\'s a community waiting for you. Our clubs organize regular meetings, workshops, competitions, and social events throughout the year.',
       highlights: [
         'Tech Clubs: Coding Club, Robotics Society, AI & ML Club',
@@ -21,16 +21,16 @@ const StudentLife = () => {
         'Social: Debate Society, Community Service, Environmental Club',
       ],
       gallery: [
-        'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800',
-        'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800',
-        'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800',
+        '/pgc1.png',
+        '/pgc2.png',
+        '/pgc3.png',
       ],
     },
     {
       icon: HiLightningBolt,
       title: 'Sports & Fitness',
       description: 'Modern gym, courts, and competitive teams',
-      image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600',
+      image: '/pgc2.png',
       fullDescription: 'Stay active and healthy with our state-of-the-art sports facilities! Our campus features a modern gymnasium, multiple sports courts, a swimming pool, and outdoor fields. Join competitive teams or participate in recreational sports.',
       highlights: [
         'Facilities: Fully-equipped gym, basketball courts, tennis courts, cricket ground',
@@ -39,16 +39,16 @@ const StudentLife = () => {
         'Annual Events: Inter-college tournaments, Sports Day, Marathon',
       ],
       gallery: [
-        'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800',
-        'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800',
-        'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800',
+        '/pgc2.png',
+        '/pgc3.png',
+        '/pgc4.png',
       ],
     },
     {
       icon: HiHeart,
       title: 'Community Service',
       description: 'Make a difference through volunteer programs',
-      image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600',
+      image: '/pgc3.png',
       fullDescription: 'Give back to the community through our various volunteer and social service programs. Partner with local NGOs, participate in awareness campaigns, and make a real impact on society.',
       highlights: [
         'Education Initiatives: Teaching underprivileged children, literacy programs',
@@ -57,16 +57,16 @@ const StudentLife = () => {
         'Social Welfare: Food drives, clothing donations, elderly care visits',
       ],
       gallery: [
-        'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800',
-        'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800',
-        'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800',
+        '/pgc3.png',
+        '/pgc4.png',
+        '/pgc1.png',
       ],
     },
     {
       icon: HiAcademicCap,
       title: 'Cultural Events',
       description: 'Festivals, concerts, and celebrations year-round',
-      image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600',
+      image: '/pgc4.png',
       fullDescription: 'Experience the vibrant cultural life on campus! From traditional festivals to modern concerts, talent shows to art exhibitions, there\'s always something exciting happening. Celebrate diversity and showcase your talents.',
       highlights: [
         'Annual Festivals: Cultural Week, Spring Festival, Independence Day celebrations',
@@ -75,9 +75,9 @@ const StudentLife = () => {
         'Competitions: Talent shows, fashion shows, cooking competitions',
       ],
       gallery: [
-        'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800',
-        'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800',
-        'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800',
+        '/pgc4.png',
+        '/pgc1.png',
+        '/pgc2.png',
       ],
     },
   ]
@@ -104,12 +104,10 @@ const StudentLife = () => {
   ]
 
   const gallery = [
-    'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600',
-    'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600',
-    'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=600',
-    'https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600',
-    'https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600',
-    'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600',
+    '/pgc1.png',
+    '/pgc2.png',
+    '/pgc3.png',
+    '/pgc4.png',
   ]
 
   return (
