@@ -24,7 +24,7 @@ const Footer = () => {
                 alt="PGC Logo" 
                 className="h-12 w-auto object-contain bg-white rounded-lg p-1"
               />
-              <h3 className="font-heading font-bold text-xl">PGC Muridke</h3>
+              <h3 className="font-heading font-bold text-xl">Punjab College Muridke</h3>
             </div>
             <p className="text-gray-300 mb-4">
               Empowering minds and building futures through quality education.
